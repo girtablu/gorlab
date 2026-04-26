@@ -1,0 +1,111 @@
+---
+layout: default
+---
+<article class="max-w-2xl mx-auto px-4 py-10">
+
+  <header class="mb-8">
+    {% if page['cover-image'] %}
+    <img
+      src="{{ page['cover-image'] }}"
+      alt="{{ page.name }}"
+      class="w-full h-64 object-cover rounded mb-6"
+    />
+    {% endif %}
+    <h1 class="text-4xl font-bold leading-tight">{{ page.name }}</h1>
+    {% if page.summary %}
+    <p class="mt-3 text-lg opacity-70">{{ page.summary }}</p>
+    {% endif %}
+  </header>
+
+  {% if page.stats %}
+  <div class="mb-4 font-mono text-sm border border-current rounded px-4 py-3">
+    {{ page.stats }}
+  </div>
+  {% endif %}
+
+  {% assign has_subtexts = false %}
+  {% if page.subtext1 or page.subtext2 or page.subtext3 or page.subtext4 %}
+    {% assign has_subtexts = true %}
+  {% endif %}
+
+  {% if has_subtexts %}
+  <ul class="mb-6 space-y-2 list-disc list-inside">
+    {% if page.subtext1 %}<li>{{ page.subtext1 }}</li>{% endif %}
+    {% if page.subtext2 %}<li>{{ page.subtext2 }}</li>{% endif %}
+    {% if page.subtext3 %}<li>{{ page.subtext3 }}</li>{% endif %}
+    {% if page.subtext4 %}<li>{{ page.subtext4 }}</li>{% endif %}
+  </ul>
+  {% endif %}
+
+  {% if content != "" %}
+  <div class="prose dark:prose-invert max-w-none mb-8">
+    {{ content }}
+  </div>
+  {% endif %}
+
+  <dl class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm mb-8 border-t border-current pt-6">
+    {% if page.author %}
+    <dt class="font-semibold opacity-60">Author</dt>
+    <dd>{{ page.author | join: ", " | default: page.author }}</dd>
+    {% endif %}
+
+    {% if page.source %}
+    <dt class="font-semibold opacity-60">Source</dt>
+    <dd>
+      {% if page['source-url'] %}
+      <a href="{{ page['source-url'] }}" target="_blank" rel="noopener" class="underline hover:opacity-70">{{ page.source }}</a>
+      {% else %}
+      {{ page.source }}
+      {% endif %}
+    </dd>
+    {% endif %}
+
+    {% if page.genre %}
+    <dt class="font-semibold opacity-60">Genre</dt>
+    <dd>{{ page.genre }}</dd>
+    {% endif %}
+
+    {% if page.cost %}
+    <dt class="font-semibold opacity-60">Cost</dt>
+    <dd>{{ page.cost }}</dd>
+    {% endif %}
+
+    {% if page.license %}
+    <dt class="font-semibold opacity-60">License</dt>
+    <dd>{{ page.license }}</dd>
+    {% endif %}
+
+    {% if page.inspiration %}
+    <dt class="font-semibold opacity-60">Inspiration</dt>
+    <dd>
+      {% if page['inspiration-url'] %}
+      <a href="{{ page['inspiration-url'] }}" target="_blank" rel="noopener" class="underline hover:opacity-70">{{ page.inspiration }}</a>
+      {% else %}
+      {{ page.inspiration }}
+      {% endif %}
+    </dd>
+    {% endif %}
+  </dl>
+
+  {% if page.category %}
+  <div class="flex flex-wrap gap-2 mb-3">
+    {% for cat in page.category %}
+    <a
+      href="{{ site.baseurl }}/"
+      class="text-xs border border-current px-2 py-0.5 rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+    >{{ cat }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if page.tags and page.tags.size > 0 %}
+  <div class="flex flex-wrap gap-1 mb-8 opacity-60">
+    {% for tag in page.tags %}
+    <span class="text-xs border border-current px-2 py-0.5 rounded">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <a href="{{ site.baseurl }}/" class="text-sm underline hover:opacity-70">← Back to library</a>
+
+</article>

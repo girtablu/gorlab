@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/*
+  Theme customization — override these in your fork's src/app.css
+  using the @theme block to set per-instance brand colors.
+
+  Example override:
+    @theme {
+      --color-accent: oklch(70% 0.2 220);
+      --color-accent-fg: #ffffff;
+    }
+*/
+@theme {
+    --color-primary: #334155;
+    --color-secondary: #475569;
+    --color-accent: #94a3b8;
+    --color-bg: #f8fafc;
+    --color-text: #0f172a;
+    --radius-theme: 0.5rem;
+    --font-heading: "Inter", sans-serif;
+}
+
+/* Dark mode: class-based — toggled by adding 'dark' to <html> */
+@variant dark (&:where(.dark, .dark *));
+
+/* Smooth color transitions for theme toggle */
+* {
+    transition-property: color, background-color, border-color;
+    transition-duration: 150ms;
+}
+
+/* Ark UI animation keyframes */
+@keyframes scale-fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes scale-fade-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}

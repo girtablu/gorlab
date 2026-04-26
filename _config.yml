@@ -1,0 +1,33 @@
+title: Jekyll TTRPG Catalog
+description: A TTRPG content library
+baseurl: ""
+url: ""
+
+# jekyll-ttrpg-catalog theme settings
+gal_db:
+  posts_per_page: 24
+  show_authors_page: true
+  show_submit_form: true
+
+# Jekyll settings
+permalink: /:slug/
+include: ["_pages"]
+
+# Build
+exclude:
+  - node_modules
+  - src
+  - public
+  - package.json
+  - package-lock.json
+  - vite.config.ts
+  - tailwind.config.js
+  - dev.html
+  - "*.md"
+  - AGENTS.md
+  - csv_to_jekyll.py
+  - .github
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

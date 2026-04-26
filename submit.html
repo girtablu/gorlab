@@ -1,0 +1,124 @@
+---
+layout: default
+title: Submit a Resource
+permalink: /submit/
+---
+<div class="max-w-2xl mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold mb-2">Submit a Resource</h1>
+  <p class="text-sm opacity-70 mb-8">
+    Submissions are reviewed before publishing. No GitHub account required.
+    Your entry will be added as a pull request for the maintainer to review.
+  </p>
+
+  <form
+    method="POST"
+    action="https://staticman3.herokuapp.com/v3/entry/github/{{ site.repository }}/{{ site.staticman.branch | default: 'gh-pages' }}/submissions"
+    class="flex flex-col gap-4"
+  >
+    <input type="hidden" name="options[redirect]" value="{{ site.baseurl }}/submit/thanks/" />
+    <input type="hidden" name="options[slug]" value="{{ 'now' | date: '%s' }}" />
+
+    <div class="flex flex-col gap-1">
+      <label for="name" class="text-sm font-semibold">Resource Name <span class="text-red-500">*</span></label>
+      <input
+        id="name" name="fields[name]" type="text" required
+        placeholder="e.g. Swords Without Master"
+        class="border border-current bg-transparent px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-current"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="author" class="text-sm font-semibold">Author</label>
+      <input
+        id="author" name="fields[author]" type="text"
+        placeholder="e.g. Epidiah Ravachol"
+        class="border border-current bg-transparent px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-current"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="source" class="text-sm font-semibold">Source / Publisher</label>
+      <input
+        id="source" name="fields[source]" type="text"
+        placeholder="e.g. itch.io"
+        class="border border-current bg-transparent px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-current"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="source-url" class="text-sm font-semibold">Link / URL</label>
+      <input
+        id="source-url" name="fields[source-url]" type="url"
+        placeholder="https://..."
+        class="border border-current bg-transparent px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-current"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="category" class="text-sm font-semibold">Category <span class="text-red-500">*</span></label>
+      <input
+        id="category" name="fields[category]" type="text" required
+        placeholder="e.g. adventures, monsters, hacks"
+        class="border border-current bg-transparent px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-current"
+      />
+      <span class="text-xs opacity-60">Comma-separated if multiple</span>
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="genre" class="text-sm font-semibold">Genre</label>
+      <input
+        id="genre" name="fields[genre]" type="text"
+        placeholder="e.g. horror, fantasy, science fiction"
+        class="border border-current bg-transparent px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-current"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="cost" class="text-sm font-semibold">Cost</label>
+      <input
+        id="cost" name="fields[cost]" type="text"
+        placeholder="e.g. Free, PWYW, $5"
+        class="border border-current bg-transparent px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-current"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="summary" class="text-sm font-semibold">Summary <span class="text-red-500">*</span></label>
+      <textarea
+        id="summary" name="fields[summary]" required rows="3"
+        placeholder="A brief description of the resource (1–2 sentences)"
+        class="border border-current bg-transparent px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-current resize-y"
+      ></textarea>
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="cover-image" class="text-sm font-semibold">Cover Image URL</label>
+      <input
+        id="cover-image" name="fields[cover-image]" type="url"
+        placeholder="https://... (direct link to image)"
+        class="border border-current bg-transparent px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-current"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="license" class="text-sm font-semibold">License</label>
+      <input
+        id="license" name="fields[license]" type="text"
+        placeholder="e.g. CC BY 4.0, OGL, All Rights Reserved"
+        class="border border-current bg-transparent px-3 py-2 rounded text-sm focus:outline-none focus:ring-1 focus:ring-current"
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="mt-2 border border-current px-6 py-2 text-sm font-semibold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors self-start"
+    >
+      Submit for Review
+    </button>
+  </form>
+
+  <p class="mt-8 text-xs opacity-60">
+    Powered by <a href="https://staticman.net" class="underline" target="_blank" rel="noopener">Staticman</a>.
+    Submissions create a pull request for maintainer review.
+  </p>
+</div>

@@ -1,0 +1,29 @@
+---
+layout: default
+title: Authors
+permalink: /authors/
+---
+<div class="max-w-3xl mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold mb-8">Authors</h1>
+
+  {% assign sorted_posts = site.posts | sort: "author" %}
+  {% assign current_author = "" %}
+
+  {% for post in sorted_posts %}
+    {% assign post_author = post.author | join: ", " | default: post.author %}
+    {% if post_author != current_author %}
+      {% unless forloop.first %}</ul>{% endunless %}
+      <h2 class="text-xl font-semibold mt-6 mb-2" id="{{ post_author | slugify }}">
+        {{ post_author }}
+      </h2>
+      <ul class="list-disc list-inside space-y-1 text-sm">
+      {% assign current_author = post_author %}
+    {% endif %}
+    <li>
+      <a href="{{ post.url | prepend: site.baseurl }}" class="underline hover:opacity-70">
+        {{ post.name | default: post.title }}
+      </a>
+    </li>
+    {% if forloop.last %}</ul>{% endif %}
+  {% endfor %}
+</div>

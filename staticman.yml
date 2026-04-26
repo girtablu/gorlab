@@ -1,0 +1,63 @@
+# Staticman configuration
+# See https://staticman.net/docs/configuration for all options.
+#
+# To use the public Staticman API, add the staticmanapp GitHub bot
+# as a collaborator on your repo and point your form to:
+# https://staticman3.herokuapp.com/v3/entry/github/{username}/{repo}/{branch}/submissions
+#
+# For self-hosting, see: https://github.com/eduardoboucas/staticman
+
+submissions:
+  # Fields allowed from the form submission
+  allowedFields:
+    - name
+    - author
+    - source
+    - source-url
+    - category
+    - genre
+    - cost
+    - summary
+    - cover-image
+    - license
+
+  # Branch to target (must match your repo's default branch)
+  branch: gh-pages
+
+  # Commit message for the generated PR
+  commitMessage: "Add resource: {fields.name}"
+
+  # Output filename — uses a timestamp to avoid collisions
+  filename: "{fields.name | slugify}-{@timestamp}"
+
+  # Output format: frontmatter produces a Jekyll-ready .md file
+  format: frontmatter
+
+  # Auto-generated fields added to every submission
+  generatedFields:
+    date:
+      type: date
+      options:
+        format: "yyyy-MM-dd"
+    layout:
+      type: literal
+      value: entry
+
+  # Require manual review (creates a PR instead of committing directly)
+  moderation: true
+
+  # Name shown in notification emails / PR title
+  name: "jekyll-ttrpg-catalog submission"
+
+  # Destination directory for submitted files
+  path: "_posts/submissions"
+
+  # Required fields — form will error if any of these are missing
+  requiredFields:
+    - name
+    - category
+    - summary
+
+  # Transform email to MD5 if email field is ever added
+  transforms:
+    email: md5
