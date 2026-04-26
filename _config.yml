@@ -26,8 +26,9 @@ exclude:
   - vite.config.ts
   - tailwind.config.js
   - preview.html
-  - "*.md"
   - AGENTS.md
+  - README.md
+  - CONTRIBUTORS.md
   - csv_to_jekyll.py
   - .github
 
