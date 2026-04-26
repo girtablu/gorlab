@@ -4,10 +4,11 @@ baseurl: ""
 url: ""
 
 # jekyll-ttrpg-catalog theme settings
-gal_db:
+jtc:
   posts_per_page: 24
   show_authors_page: true
   show_submit_form: true
+  theme: cerberus     # cerberus | wintry | vintage | crimson | pine | modern
 
 # Jekyll settings
 permalink: /:slug/

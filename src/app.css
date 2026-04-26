@@ -1,52 +1,22 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@import '@skeletonlabs/skeleton';
+/* Bundled preset themes — switch via jtc.theme in _config.yml */
+@import '@skeletonlabs/skeleton/themes/cerberus';
+@import '@skeletonlabs/skeleton/themes/wintry';
+@import '@skeletonlabs/skeleton/themes/vintage';
+@import '@skeletonlabs/skeleton/themes/crimson';
+@import '@skeletonlabs/skeleton/themes/pine';
+@import '@skeletonlabs/skeleton/themes/modern';
 
 /*
-  Theme customization — override these in your fork's src/app.css
-  using the @theme block to set per-instance brand colors.
-
-  Example override:
-    @theme {
-      --color-accent: oklch(70% 0.2 220);
-      --color-accent-fg: #ffffff;
-    }
+  CUSTOM THEMES (contributors)
+  1. Generate a theme at https://themes.skeleton.dev/
+  2. Save the generated CSS as a file in the project root (e.g. my-theme.css)
+  3. Add: @import '../my-theme' below
+  4. Add the theme name to jtc.theme in _config.yml
 */
-@theme {
-    --color-primary: #334155;
-    --color-secondary: #475569;
-    --color-accent: #94a3b8;
-    --color-bg: #f8fafc;
-    --color-text: #0f172a;
-    --radius-theme: 0.5rem;
-    --font-heading: "Inter", sans-serif;
-}
 
-/* Dark mode: class-based — toggled by adding 'dark' to <html> */
-@variant dark (&:where(.dark, .dark *));
-
-/* Smooth color transitions for theme toggle */
-* {
-    transition-property: color, background-color, border-color;
-    transition-duration: 150ms;
-}
-
-/* Ark UI animation keyframes */
-@keyframes scale-fade-in {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-@keyframes scale-fade-out {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-}
+/* Class-based dark mode — toggle .dark on <html> */
+@custom-variant dark (&:where(.dark, .dark *));

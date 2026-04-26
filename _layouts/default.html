@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{ site.jtc.theme | default: 'cerberus' }}">
   {% include head.html %}
-  <body class="bg-white text-black dark:bg-black dark:text-white min-h-screen font-sans">
+  <body class="min-h-screen">
 
     <header class="border-b border-current px-4 py-3">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -9,16 +9,16 @@
           {{ site.title }}
         </a>
         <nav class="flex items-center gap-4 text-sm">
-          {% if site.gal_db.show_authors_page %}
+          {% if site.jtc.show_authors_page %}
           <a href="{{ site.baseurl }}/authors/" class="hover:opacity-70">Authors</a>
           {% endif %}
-          {% if site.gal_db.show_submit_form %}
+          {% if site.jtc.show_submit_form %}
           <a href="{{ site.baseurl }}/submit/" class="hover:opacity-70">Submit</a>
           {% endif %}
           <button
             id="theme-toggle"
             aria-label="Toggle dark mode"
-            class="border border-current px-2 py-1 text-xs rounded hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+            class="btn preset-outlined text-xs"
           >
             <span class="dark:hidden">Dark</span>
             <span class="hidden dark:inline">Light</span>

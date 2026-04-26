@@ -31,7 +31,7 @@
   )
 </script>
 
-<article class="flex flex-col border border-current rounded overflow-hidden hover:shadow-lg transition-shadow">
+<article class="card flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
 
   <!-- Cover image or gradient placeholder -->
   <a href={post.url} class="block aspect-[4/3] overflow-hidden flex-shrink-0">
@@ -65,7 +65,7 @@
 
       <div class="flex flex-wrap gap-1 items-center">
         {#each categories as cat}
-        <span class="text-xs border border-current px-2 py-0.5 rounded-full">{cat}</span>
+        <span class="chip preset-tonal text-xs">{cat}</span>
         {/each}
 
         {#if post.cost}
