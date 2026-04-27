@@ -4,4 +4,13 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [tailwindcss(), sveltekit()],
+  server: {
+    watch: {
+      ignored: [
+        '**/_site/**',
+        '**/.svelte-kit/**',
+        (path: string) => path.endsWith('.md') && !path.includes('/posts/'),
+      ],
+    },
+  },
 })
