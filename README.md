@@ -4,7 +4,6 @@ A Jekyll-based content library framework for TTRPG games. Card-grid layout with 
 
 Fork of [jekyll-db](https://github.com/rypan/jekyll-db).
 
----
 
 ## Quick start
 
@@ -12,7 +11,6 @@ Fork or clone the repo, push to GitHub, and GitHub Actions handles the build and
 
 For most workflows, like adding content, changing config, or tweaking a theme, the loop is just edit → push → done.
 
----
 
 ## Adding content
 
@@ -55,7 +53,6 @@ python csv_to_jekyll.py
 # Move generated .md files into _posts/<category>/
 ```
 
----
 
 ## Categories
 
@@ -86,7 +83,6 @@ category:
 
 The folder name and the `category:` value are independent. Jekyll uses the front matter, not the path, for filtering. Convention is to keep them matching.
 
----
 
 ## Configuration
 
@@ -106,7 +102,6 @@ jtc:
   theme: cerberus            # see Theming below
 ```
 
----
 
 ## Theming
 
@@ -125,7 +120,6 @@ Push the config change and GitHub Actions deploys it.
 
 To create a custom theme or add more presets, see [CONTRIBUTORS.md](CONTRIBUTORS.md).
 
----
 
 ## Deployment (GitHub Pages)
 
@@ -137,7 +131,6 @@ The included GitHub Actions workflow (`.github/workflows/build.yml`) handles dep
 
 For project pages (e.g. `username.github.io/my-repo`), set `baseurl: "/my-repo"` in `_config.yml`.
 
----
 
 ## Submission form
 
@@ -149,13 +142,11 @@ To enable:
 2. Update `staticman.yml` with your repo details
 3. Set `show_submit_form: true` in `_config.yml`
 
----
 
 ## Hacking the app
 
 Want to modify the Svelte UI, add custom themes, or contribute? See [CONTRIBUTORS.md](CONTRIBUTORS.md).
 
----
 
 ## License
 

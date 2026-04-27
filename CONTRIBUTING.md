@@ -2,7 +2,6 @@
 
 This doc is for anyone who wants to modify the frontend: themes, CSS, or Svelte components. End users adding content or changing config don't need any of this; see [README.md](README.md).
 
----
 
 ## How the app is structured
 
@@ -24,14 +23,12 @@ src/
     └── Pagination.svelte    # Skeleton Pagination component
 ```
 
----
 
 ## Prerequisites
 
 - Node.js ≥ 20
 - npm
 
----
 
 ## Dev setup
 
@@ -67,7 +64,6 @@ npm run watch    # rebuilds assets/ on every save
 bundle exec jekyll serve
 ```
 
----
 
 ## Theming
 
@@ -108,7 +104,6 @@ Then rebuild and commit `assets/app.css`.
 
 Dark mode is class-based. The JS in `_includes/head.html` adds `.dark` to `<html>` based on `localStorage` / `prefers-color-scheme`. The toggle button in the header flips it. If you want to change the dark mode strategy, update the `@custom-variant dark` rule in `src/app.css` and the toggle script.
 
----
 
 ## Svelte component notes
 
@@ -118,7 +113,6 @@ Dark mode is class-based. The JS in `_includes/head.html` adds `.dark` to `<html
 - `TagCloud.svelte` uses `chip preset-tonal/preset-filled`; these classes respond to the active Skeleton theme automatically.
 - `Pagination.svelte` wraps Skeleton's `Pagination` component from `@skeletonlabs/skeleton-svelte`. The parent uses `bind:page` and the component handles the `onPageChange` → `$bindable` wiring internally.
 
----
 
 ## Build output
 
