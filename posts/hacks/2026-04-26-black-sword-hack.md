@@ -11,7 +11,7 @@ author: Alexandre ‘Kobayashi’ Jeannette
 source: website
 source-url: >-
   https://www.themerrymushmen.com/product/black-sword-hack-ultimate-chaos-edition/
-cover-image: 'https://www.themerrymushmen.com/wp-content/uploads/2023/01/BSH-COVER.jpg'
+cover-image: '/covers/black-sword-hack.jpg'
 subtexts:
   - Ultimate Chaos Edition
   - Old School Dark Fantasy

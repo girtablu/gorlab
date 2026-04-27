@@ -11,7 +11,7 @@ author: Yochai Gal
 source: Cairn Store
 source-url: 'https://store.cairnrpg.com/products/cairn-barebones-edition'
 cover-image: >-
-  https://store.cairnrpg.com/cdn/shop/files/Cairn_Barebones_Edition_fd70c878-52f5-488d-b6b0-9c49e2835a70_1024x1024@2x.png
+  /covers/cairn-barebones-edition.png
 subtexts:
   - Built on the Cairn ruleset.
   - >-
