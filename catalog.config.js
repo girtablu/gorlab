@@ -10,7 +10,7 @@ export default {
   // description: "",
   // theme: "cerberus",   // cerberus | wintry | vintage | crimson | pine | modern
   // postsPerPage: 24,
-  // showSubmitForm: true,
+  showSubmitForm: true,
   // showTagCloud: true,   // master toggle: pill-based filter UI — suits small collections
   // showFilterBar: true,  // master toggle: dropdown menu filter UI — suits large collections
 
@@ -43,7 +43,7 @@ export default {
   // staticmanUrl: the Staticman API endpoint for community submissions.
   // Replace USERNAME, REPO, and BRANCH with your own values.
   staticmanUrl:
-    "https://staticman3.herokuapp.com/v3/entry/github/USERNAME/REPO/BRANCH/submissions",
+    "https://staticman3.herokuapp.com/v3/entry/github/Gulluth/jekyll-ttrpg-catalog/main/submissions",
 
   // customFields: define additional frontmatter fields specific to your catalog.
   // Each field is added to the resource page display and, if showSubmitForm is true,
