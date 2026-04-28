@@ -28,7 +28,7 @@ test.describe('submission form', () => {
   test('shows category error when submitting without a category', async ({ page }) => {
     await page.fill('[name="fields[name]"]', 'Test Resource')
     await page.fill('[name="fields[summary]"]', 'A brief description.')
-    await page.click('button[type="submit"]')
+    await page.getByRole('button', { name: 'Submit Resource' }).click()
 
     await expect(page.locator('[role="alert"]').filter({ hasText: /category/i })).toBeVisible()
     await expect(page.locator('[data-testid="form-success"]')).not.toBeVisible()
@@ -58,7 +58,7 @@ test.describe('submission form', () => {
     await page.fill('[name="fields[summary]"]', 'A short form game about exploration.')
     await page.locator('input[name="fields[category][]"]').first().check()
 
-    await page.click('button[type="submit"]')
+    await page.getByRole('button', { name: 'Submit Resource' }).click()
     await expect(page.locator('[data-testid="form-success"]')).toBeVisible()
 
     // Verify the POST went to the configured Staticman endpoint
@@ -73,7 +73,7 @@ test.describe('submission form', () => {
     await page.fill('[name="fields[summary]"]', 'Great game.')
     await page.locator('input[name="fields[category][]"]').first().check()
 
-    await page.click('button[type="submit"]')
+    await page.getByRole('button', { name: 'Submit Resource' }).click()
     await expect(page.locator('[data-testid="form-success"]')).toBeVisible()
   })
 
@@ -91,7 +91,7 @@ test.describe('submission form', () => {
     await page.fill('[name="fields[summary]"]', 'Great game.')
     await page.locator('input[name="fields[category][]"]').first().check()
 
-    await page.click('button[type="submit"]')
+    await page.getByRole('button', { name: 'Submit Resource' }).click()
     await expect(page.locator('[data-testid="form-error"]')).toBeVisible()
   })
 })
