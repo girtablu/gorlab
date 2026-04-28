@@ -51,7 +51,9 @@
     {@render children()}
   </main>
 
-  <footer class="border-t border-surface-200-800 px-4 py-3 text-xs opacity-40 text-center">
+  <footer class="border-t border-surface-200-800 px-4 py-3 text-xs opacity-40 text-center flex flex-wrap justify-center gap-x-4 gap-y-1">
+    <span>{config.title} #{__COMMIT_SHA__}</span>
+    <a href="https://opensource.org/licenses/MIT" class="hover:opacity-80" target="_blank" rel="noopener">MIT License</a>
     <a href="{base}/feed.xml" class="hover:opacity-80">RSS Feed</a>
   </footer>
 </div>
