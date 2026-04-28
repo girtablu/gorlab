@@ -2,13 +2,15 @@
   let {
     categories = [],
     selected = $bindable('all'),
+    show = true,
   }: {
     categories: string[]
     selected: string
+    show?: boolean
   } = $props()
 </script>
 
-{#if categories.length > 0}
+{#if show && categories.length > 0}
 <div class="flex flex-wrap gap-1.5" role="group" aria-label="Filter by category">
   <button
     onclick={() => { selected = 'all' }}

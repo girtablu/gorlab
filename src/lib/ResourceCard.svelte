@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { Post } from '../App.svelte'
+  import type { Post } from './posts.js'
+  import { base } from '$app/paths'
 
   let { post }: { post: Post } = $props()
 
@@ -26,18 +27,21 @@
   const categories = $derived(toArray(post.category))
   const author = $derived(toArray(post.author).join(', '))
   const hasCover = $derived(Boolean(post['cover-image']))
+  const coverSrc = $derived(
+    post['cover-image']?.startsWith('/') ? `${base}${post['cover-image']}` : (post['cover-image'] ?? '')
+  )
   const coverStyle = $derived(
     hasCover ? '' : `background: ${placeholderGradient(post.name ?? post.slug)};`
   )
 </script>
 
-<article class="card flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+<article class="card flex flex-col overflow-hidden hover:shadow-lg transition-shadow {post.featured ? 'ring-1 ring-primary-500' : ''}">
 
   <!-- Cover image or gradient placeholder -->
-  <a href={post.url} class="block aspect-[4/3] overflow-hidden flex-shrink-0">
+  <a href={`${base}/resource/${post.slug}/`} class="block aspect-[4/3] overflow-hidden flex-shrink-0">
     {#if hasCover}
       <img
-        src={post['cover-image']}
+        src={coverSrc}
         alt={post.name}
         class="w-full h-full object-cover"
         loading="lazy"
@@ -51,7 +55,7 @@
   <div class="flex flex-col flex-1 p-4 gap-2">
 
     <h2 class="font-bold text-base leading-snug">
-      <a href={post.url} class="hover:underline">{post.name}</a>
+      <a href={`${base}/resource/${post.slug}/`} class="hover:underline">{post.name}</a>
     </h2>
 
     {#if post.summary}

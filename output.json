@@ -1,5 +1,0 @@
----
-layout: none
----
-[{% for post in site.posts %}{% unless forloop.first %},
-{% endunless %}{"slug":{{ post.slug | jsonify }},"url":{{ post.url | prepend: site.baseurl | jsonify }},"name":{{ post.name | jsonify }},"category":{{ post.category | jsonify }},"author":{{ post.author | jsonify }},"source":{{ post.source | jsonify }},"source-url":{{ post['source-url'] | jsonify }},"genre":{{ post.genre | jsonify }},"summary":{{ post.summary | jsonify }},"cost":{{ post.cost | jsonify }},"license":{{ post.license | jsonify }},"cover-image":{% assign ci = post['cover-image'] %}{% if ci contains '://' %}{{ ci | jsonify }}{% elsif ci %}{{ ci | prepend: site.baseurl | jsonify }}{% else %}null{% endif %},"tags":{{ post.tags | jsonify }},"stats":{{ post.stats | jsonify }},"subtext1":{{ post.subtext1 | jsonify }},"subtext2":{{ post.subtext2 | jsonify }},"subtext3":{{ post.subtext3 | jsonify }},"subtext4":{{ post.subtext4 | jsonify }},"inspiration":{{ post.inspiration | jsonify }},"inspiration-url":{{ post['inspiration-url'] | jsonify }}}{% endfor %}]

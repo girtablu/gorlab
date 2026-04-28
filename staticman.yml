@@ -20,9 +20,10 @@ submissions:
     - summary
     - cover-image
     - license
+    - tags
 
-  # Branch to target (must match your repo's default branch)
-  branch: gh-pages
+  # Branch to target (must match your repo's main branch)
+  branch: main
 
   # Commit message for the generated PR
   commitMessage: "Add resource: {fields.name}"
@@ -30,7 +31,7 @@ submissions:
   # Output filename — uses a timestamp to avoid collisions
   filename: "{fields.name | slugify}-{@timestamp}"
 
-  # Output format: frontmatter produces a Jekyll-ready .md file
+  # Output format: frontmatter produces a markdown file with YAML front matter
   format: frontmatter
 
   # Auto-generated fields added to every submission
@@ -39,9 +40,6 @@ submissions:
       type: date
       options:
         format: "yyyy-MM-dd"
-    layout:
-      type: literal
-      value: entry
 
   # Require manual review (creates a PR instead of committing directly)
   moderation: true
@@ -50,7 +48,7 @@ submissions:
   name: "jekyll-ttrpg-catalog submission"
 
   # Destination directory for submitted files
-  path: "_posts/submissions"
+  path: "posts/incoming"
 
   # Required fields — form will error if any of these are missing
   requiredFields:

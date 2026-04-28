@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Post } from '../App.svelte'
+  import type { Post } from './posts.js'
   import ResourceCard from './ResourceCard.svelte'
 
   let { posts }: { posts: Post[] } = $props()

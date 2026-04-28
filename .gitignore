@@ -1,13 +1,6 @@
 _site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
+.svelte-kit/
 node_modules/
-vendor/
-.bundle/
 dist/
 .env
 *.log
-Gemfile.lock
-public/output.json
-assets/output.json
