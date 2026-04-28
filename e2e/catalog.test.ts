@@ -1,10 +1,8 @@
 import { test, expect } from '@playwright/test'
 
-const BASE = '/jekyll-ttrpg-catalog'
-
 test.describe('catalog page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(`${BASE}/`)
+    await page.goto('/')
   })
 
   test('loads with cards visible', async ({ page }) => {
@@ -70,7 +68,7 @@ test.describe('catalog page', () => {
   })
 
   test('category URL param pre-filters results', async ({ page }) => {
-    await page.goto(`${BASE}/?category=monsters`)
+    await page.goto('/?category=monsters')
     const cards = page.locator('article.card')
     const total = await cards.count()
     expect(total).toBeGreaterThan(0)

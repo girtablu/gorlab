@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test'
 
-const BASE = '/jekyll-ttrpg-catalog'
 
 test.describe('submission form', () => {
   test.beforeEach(async ({ page }) => {
@@ -17,7 +16,7 @@ test.describe('submission form', () => {
       }
     })
 
-    await page.goto(`${BASE}/submit/`)
+    await page.goto('/submit/')
   })
 
   test('renders required fields', async ({ page }) => {

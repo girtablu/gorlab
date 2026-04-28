@@ -12,11 +12,8 @@ const config = {
       precompress: false,
       strict: true,
     }),
-    // Set paths.base to your GitHub Pages repo path, e.g. '/my-repo-name'.
-    // Leave as '' for user/org GitHub Pages sites (username.github.io).
-    paths: {
-      base: '/jekyll-ttrpg-catalog',
-    },
+    // Set paths.base if deploying to a sub-path, e.g. '/my-repo-name' for
+    // GitHub Pages project sites. Leave unset (default '') for root deployments.
   },
 }
 
