@@ -28,25 +28,25 @@ test('renders all four filter selects and sort select when show is true', () => 
   expect(screen.getByLabelText('Sort by')).toBeInTheDocument()
 })
 
-test('Clear filters button hidden when nothing is dirty', () => {
+test('Clear filters button is disabled when nothing is dirty', () => {
   render(FilterBar, baseProps)
-  expect(screen.queryByText('Clear filters')).not.toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Clear filters' })).toBeDisabled()
 })
 
-test('Clear filters button shown when a filter is non-default', () => {
+test('Clear filters button is enabled when a filter is non-default', () => {
   render(FilterBar, { ...baseProps, category: 'hacks' })
-  expect(screen.getByText('Clear filters')).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Clear filters' })).not.toBeDisabled()
 })
 
-test('Clear filters button shown when sort is non-default', () => {
+test('Clear filters button is enabled when sort is non-default', () => {
   render(FilterBar, { ...baseProps, sort: 'az' as const })
-  expect(screen.getByText('Clear filters')).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Clear filters' })).not.toBeDisabled()
 })
 
 test('clicking Clear filters resets selects to default values', async () => {
   render(FilterBar, { ...baseProps, category: 'hacks', sort: 'az' as const })
-  await fireEvent.click(screen.getByText('Clear filters'))
-  expect(screen.queryByText('Clear filters')).not.toBeInTheDocument()
+  await fireEvent.click(screen.getByRole('button', { name: 'Clear filters' }))
+  expect(screen.getByRole('button', { name: 'Clear filters' })).toBeDisabled()
 })
 
 test('sort select has all four options', () => {
