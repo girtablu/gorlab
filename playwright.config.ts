@@ -1,4 +1,9 @@
 import { defineConfig, devices } from '@playwright/test'
+import catalogConfig from './catalog.config.js'
+
+const base: string = (catalogConfig as { basePath?: string }).basePath ?? ''
+const origin = 'http://localhost:4173'
+const baseURL = `${origin}${base}/`
 
 export default defineConfig({
   testDir: './e2e',
@@ -7,7 +12,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:4173',
+    baseURL,
     trace: 'on-first-retry',
   },
   projects: [
@@ -28,7 +33,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'npm run preview',
-    url: 'http://localhost:4173',
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
   },
 })

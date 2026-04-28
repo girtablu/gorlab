@@ -22,4 +22,5 @@ export interface CatalogConfig {
   categories: string[]
   customFields?: CustomField[]
   staticmanUrl?: string
+  basePath?: string
 }

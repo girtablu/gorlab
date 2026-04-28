@@ -16,7 +16,7 @@ test.describe('submission form', () => {
       }
     })
 
-    await page.goto('/submit/')
+    await page.goto('./submit/')
   })
 
   test('renders required fields', async ({ page }) => {

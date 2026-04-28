@@ -1,5 +1,11 @@
 /** @type {import('./src/lib/config.js').CatalogConfig} */
 export default {
+  // basePath: the sub-path https://gulluth.github.io/jekyll-ttrpg-catalog/resource/black-sword-hack/where your site is deployed.
+  // Set this to '/your-repo-name' for GitHub Pages project sites
+  // (userid.github.io/repo-name). Leave commented out for root deployments
+  // (userid.github.io or a custom domain at the root).
+  // basePath: '/jekyll-ttrpg-catalog',
+
   title: "Jekyll TTRPG Catalog",
   // description: "",
   // theme: "cerberus",   // cerberus | wintry | vintage | crimson | pine | modern
@@ -7,7 +13,7 @@ export default {
   // showSubmitForm: true,
   // showTagCloud: true,   // master toggle: pill-based filter UI — suits small collections
   // showFilterBar: true,  // master toggle: dropdown menu filter UI — suits large collections
-  //
+
   // filters: per-dimension overrides; takes precedence over master toggles above.
   // Each dimension can appear in the tag cloud, the dropdown menu, both, or neither.
   // Defaults shown below — omit the filters block to use defaults.
@@ -32,16 +38,12 @@ export default {
   // Add, remove, or rename entries to match your catalog's content structure.
   // This does NOT restrict what the app displays — posts in any category will
   // appear automatically. This list only controls what submitters can choose.
-  categories: [
-    "hacks",
-    "monsters",
-    "npcs",
-    "miscellany",
-  ],
+  categories: ["hacks", "monsters", "npcs", "miscellany"],
 
   // staticmanUrl: the Staticman API endpoint for community submissions.
   // Replace USERNAME, REPO, and BRANCH with your own values.
-  staticmanUrl: "https://staticman3.herokuapp.com/v3/entry/github/USERNAME/REPO/BRANCH/submissions",
+  staticmanUrl:
+    "https://staticman3.herokuapp.com/v3/entry/github/USERNAME/REPO/BRANCH/submissions",
 
   // customFields: define additional frontmatter fields specific to your catalog.
   // Each field is added to the resource page display and, if showSubmitForm is true,
@@ -66,4 +68,4 @@ export default {
   //   { key: "format",        label: "Format",        type: "text",   multiple: false },
   //   { key: "game_system",   label: "Game System",   type: "text",   multiple: true  },
   // ],
-}
+};

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('catalog page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/')
+    await page.goto('.')
   })
 
   test('loads with cards visible', async ({ page }) => {
@@ -68,7 +68,7 @@ test.describe('catalog page', () => {
   })
 
   test('category URL param pre-filters results', async ({ page }) => {
-    await page.goto('/?category=monsters')
+    await page.goto('./?category=monsters')
     const cards = page.locator('article.card')
     const total = await cards.count()
     expect(total).toBeGreaterThan(0)
