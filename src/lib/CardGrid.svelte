@@ -10,7 +10,7 @@
     <p class="opacity-40 text-sm">No resources match your filters.</p>
   </div>
 {:else}
-  <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
     {#each posts as post (post.slug)}
       <li>
         <ResourceCard {post} />

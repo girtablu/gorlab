@@ -38,7 +38,7 @@
 <article class="card flex flex-col overflow-hidden hover:shadow-lg transition-shadow {post.featured ? 'ring-1 ring-primary-500' : ''}">
 
   <!-- Cover image or gradient placeholder -->
-  <a href={`${base}/resource/${post.slug}/`} class="block aspect-[4/3] overflow-hidden flex-shrink-0">
+  <a href={`${base}/resource/${post.slug}/`} class="block aspect-[2/3] overflow-hidden flex-shrink-0">
     {#if hasCover}
       <img
         src={coverSrc}
