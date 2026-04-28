@@ -1,6 +1,8 @@
-_site/
+build/
 .svelte-kit/
 node_modules/
 dist/
 .env
 *.log
+playwright-report/
+test-results/

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { applySearch, applyFilters, sortPosts, paginate, getAuthors, getGenres, getCosts } from './filters.js'
+import { applyFilters, sortPosts, paginate, getAuthors, getGenres, getCosts } from './filters.js'
 import type { Post } from './posts.js'
 
 function makePost(overrides: Partial<Post> & { slug: string }): Post {
@@ -34,42 +34,6 @@ const POSTS: Post[] = [
   makePost({ slug: 'featured-hi', name: 'Featured High', date: '2024-01-01', featured: true, sort_priority: 1, category: ['hacks'], genre: 'fantasy', cost: 'free', author: 'Dave' }),
   makePost({ slug: 'featured-lo', name: 'Featured Low',  date: '2024-01-01', featured: true, sort_priority: 2, category: ['hacks'], genre: 'horror',  cost: '$5',   author: 'Eve' }),
 ]
-
-// ─── applySearch ──────────────────────────────────────────────────────────────
-
-describe('applySearch', () => {
-  it('empty query returns all posts', () => {
-    expect(applySearch(POSTS, '').length).toBe(POSTS.length)
-    expect(applySearch(POSTS, '   ').length).toBe(POSTS.length)
-  })
-
-  it('matches on name (case-insensitive)', () => {
-    expect(applySearch(POSTS, 'alpha').map(p => p.slug)).toContain('alpha')
-    expect(applySearch(POSTS, 'ALPHA').map(p => p.slug)).toContain('alpha')
-  })
-
-  it('matches on summary', () => {
-    expect(applySearch(POSTS, 'test resource').length).toBeGreaterThan(0)
-  })
-
-  it('matches on author', () => {
-    const result = applySearch(POSTS, 'alice')
-    expect(result.map(p => p.slug)).toContain('alpha')
-    expect(result.map(p => p.slug)).toContain('gamma')
-  })
-
-  it('matches on tags', () => {
-    expect(applySearch(POSTS, 'osr').map(p => p.slug)).toContain('alpha')
-  })
-
-  it('matches on category', () => {
-    expect(applySearch(POSTS, 'monsters').map(p => p.slug)).toContain('beta')
-  })
-
-  it('returns empty when nothing matches', () => {
-    expect(applySearch(POSTS, 'xyzzy-no-match')).toHaveLength(0)
-  })
-})
 
 // ─── applyFilters ─────────────────────────────────────────────────────────────
 

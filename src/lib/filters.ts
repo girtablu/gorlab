@@ -3,7 +3,6 @@ import type { Post } from './posts.js'
 export type SortOption = 'newest' | 'oldest' | 'az' | 'za'
 
 export interface FilterState {
-  search: string
   category: string
   author: string
   genre: string
@@ -12,7 +11,6 @@ export interface FilterState {
 }
 
 export const DEFAULT_FILTER_STATE: FilterState = {
-  search: '',
   category: 'all',
   author: 'all',
   genre: 'all',
@@ -22,21 +20,6 @@ export const DEFAULT_FILTER_STATE: FilterState = {
 
 function normalize(s: string | null | undefined): string {
   return (s ?? '').toLowerCase().trim()
-}
-
-export function applySearch(posts: Post[], query: string): Post[] {
-  if (!query.trim()) return posts
-  const lq = query.toLowerCase().trim()
-  return posts.filter(post => {
-    const haystack = [
-      post.name,
-      post.summary,
-      post.author,
-      ...post.tags,
-      ...post.category,
-    ].map(normalize).join(' ')
-    return haystack.includes(lq)
-  })
 }
 
 export function applyFilters(

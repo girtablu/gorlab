@@ -9,7 +9,7 @@
   <title>{post.name}</title>
 </svelte:head>
 
-<div class="px-4 py-8 max-w-2xl mx-auto">
+<div data-pagefind-body class="px-4 py-8 max-w-2xl mx-auto">
 
   <!-- Cover image -->
   {#if post['cover-image']}
