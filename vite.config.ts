@@ -25,7 +25,7 @@ export default defineConfig({
   server: {
     watch: {
       ignored: [
-        '**/_site/**',
+        '**/build/**',
         '**/.svelte-kit/**',
         (path: string) => path.endsWith('.md') && !path.includes('/posts/'),
       ],

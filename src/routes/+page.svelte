@@ -1,9 +1,8 @@
 <script lang="ts">
   import { onMount, untrack } from 'svelte'
   import { replaceState } from '$app/navigation'
-  import { applySearch, applyFilters, sortPosts, paginate } from '$lib/filters.js'
+  import { applyFilters, sortPosts, paginate } from '$lib/filters.js'
   import type { SortOption } from '$lib/filters.js'
-  import { searchState } from '$lib/search.svelte.js'
   import CardGrid from '$lib/CardGrid.svelte'
   import FilterBar from '$lib/FilterBar.svelte'
   import TagCloud from '$lib/TagCloud.svelte'
@@ -21,7 +20,6 @@
 
   onMount(() => {
     const p = new URLSearchParams(window.location.search)
-    searchState.query = p.get('q') ?? ''
     filterCategory = p.get('category') ?? 'all'
     filterAuthor = p.get('author') ?? 'all'
     filterGenre = p.get('genre') ?? 'all'
@@ -30,9 +28,9 @@
     mounted = true
   })
 
-  // Reset to page 1 whenever filter/search/sort state changes
+  // Reset to page 1 whenever filter/sort state changes
   const filterKey = $derived(
-    `${searchState.query}|${filterCategory}|${filterAuthor}|${filterGenre}|${filterCost}|${sort}`
+    `${filterCategory}|${filterAuthor}|${filterGenre}|${filterCost}|${sort}`
   )
   $effect(() => {
     filterKey
@@ -43,7 +41,6 @@
   $effect(() => {
     if (!mounted) return
     const p = new URLSearchParams()
-    if (searchState.query) p.set('q', searchState.query)
     if (filterCategory !== 'all') p.set('category', filterCategory)
     if (filterAuthor !== 'all') p.set('author', filterAuthor)
     if (filterGenre !== 'all') p.set('genre', filterGenre)
@@ -54,10 +51,7 @@
   })
 
   const filtered = $derived(
-    applyFilters(
-      applySearch(data.posts, searchState.query),
-      { category: filterCategory, author: filterAuthor, genre: filterGenre, cost: filterCost }
-    )
+    applyFilters(data.posts, { category: filterCategory, author: filterAuthor, genre: filterGenre, cost: filterCost })
   )
   const sorted = $derived(sortPosts(filtered, sort))
   const { items: paginated, totalPages } = $derived(

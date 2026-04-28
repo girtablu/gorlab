@@ -11,18 +11,6 @@ test.describe('catalog page', () => {
     expect(await cards.count()).toBeGreaterThan(0)
   })
 
-  test('search narrows results and clearing restores them', async ({ page }) => {
-    const cards = page.locator('article.card')
-    const total = await cards.count()
-
-    await page.getByLabel('Search resources').fill('basilisk')
-    await expect(cards).toHaveCount(1)
-    await expect(cards.first().getByRole('heading')).toContainText('Basilisk')
-
-    await page.getByLabel('Search resources').fill('')
-    await expect(cards).toHaveCount(total)
-  })
-
   test('tag cloud category filter narrows results', async ({ page }) => {
     const cards = page.locator('article.card')
     const total = await cards.count()

@@ -2,7 +2,6 @@
     import "../app.css";
     import { base } from "$app/paths";
     import { config } from "$lib/catalog.js";
-    import { searchState } from "$lib/search.svelte.js";
     import SearchInput from "$lib/SearchInput.svelte";
 
     const { children } = $props();
@@ -31,7 +30,7 @@
             {config.title}
         </a>
         <div class="flex-1 max-w-sm">
-            <SearchInput bind:value={searchState.query} />
+            <SearchInput />
         </div>
         <div class="ml-auto flex items-center gap-3">
             {#if config.showSubmitForm}
