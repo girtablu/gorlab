@@ -1,22 +1,37 @@
-import rawConfig from '../../catalog.config.js'
-import type { CatalogConfig, CustomField, FilterDimension } from './config.js'
+import rawConfig from "../../catalog.config.js";
+import type { CatalogConfig, CustomField, FilterDimension } from "./config.js";
 
-const cfg = rawConfig as CatalogConfig
+const cfg = rawConfig as CatalogConfig;
 
 export const config = {
+  // Identity
   title: cfg.title,
-  description: cfg.description ?? '',
-  theme: cfg.theme ?? 'cerberus',
+  description: cfg.description ?? "",
+  siteUrl: cfg.siteUrl ?? "",
+
+  // Appearance
+  theme: cfg.theme ?? "vintage",
+
+  // Content display
   postsPerPage: cfg.postsPerPage ?? 24,
-  showSubmitForm: cfg.showSubmitForm ?? true,
+  showCost: cfg.showCost ?? false,
+
+  // Navigation & filters
   showTagCloud: cfg.showTagCloud ?? true,
   showFilterBar: cfg.showFilterBar ?? true,
-  filters: cfg.filters ?? ({} as Partial<Record<'category' | 'author' | 'genre' | 'cost' | 'tags', FilterDimension>>),
-  categories: cfg.categories,
-  customFields: cfg.customFields ?? ([] as CustomField[]),
-  staticmanUrl: cfg.staticmanUrl ?? '',
-  showCost: cfg.showCost ?? true,
-  siteUrl: cfg.siteUrl ?? '',
-}
+  filters:
+    cfg.filters ??
+    ({} as Partial<
+      Record<"category" | "author" | "genre" | "cost" | "tags", FilterDimension>
+    >),
 
-export type ResolvedConfig = typeof config
+  // Custom fields
+  customFields: cfg.customFields ?? ([] as CustomField[]),
+
+  // Community submissions
+  showSubmitForm: cfg.showSubmitForm ?? false,
+  staticmanUrl: cfg.staticmanUrl ?? "",
+  categories: cfg.categories,
+};
+
+export type ResolvedConfig = typeof config;
