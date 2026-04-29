@@ -17,5 +17,5 @@ subtexts:
   - >-
     The "barebones" version of Cairn is presented art-free (aside from the cover
     and character sheet) and is released under CC-BY-SA 4.0.
+license: CC BY-SA 4.0
 ---
-
