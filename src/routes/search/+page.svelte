@@ -1,30 +1,35 @@
-<script lang="ts">
-  import { onMount } from 'svelte'
-  import { afterNavigate } from '$app/navigation'
-  import { base } from '$app/paths'
-
+<script lang="ts" module>
   interface PagefindResult {
     url: string
     excerpt: string
     meta: { title?: string }
   }
 
+  // Singleton — survives route changes so Pagefind is only imported once
+  let pagefind: {
+    search: (q: string) => Promise<{ results: { data: () => Promise<PagefindResult> }[] }>
+    options: (o: object) => Promise<void>
+  } | null = null
+</script>
+
+<script lang="ts">
+  import { afterNavigate } from '$app/navigation'
+  import { base } from '$app/paths'
+
   let query = $state('')
   let results = $state<PagefindResult[]>([])
   let loading = $state(false)
   let unavailable = $state(false)
 
-  let pagefindModule: { search: (q: string) => Promise<{ results: { data: () => Promise<PagefindResult> }[] }>, options: (o: object) => Promise<void> } | null = null
-
   async function runSearch(q: string) {
     if (!q) { results = []; return }
     loading = true
     try {
-      if (!pagefindModule) {
-        pagefindModule = await import(/* @vite-ignore */ `${base}/pagefind/pagefind.js`)
-        if (base) await pagefindModule!.options({ baseUrl: base })
+      if (!pagefind) {
+        pagefind = await import(/* @vite-ignore */ `${base}/pagefind/pagefind.js`)
+        if (base) await pagefind!.options({ baseUrl: base })
       }
-      const search = await pagefindModule!.search(q)
+      const search = await pagefind!.search(q)
       results = await Promise.all(search.results.map(r => r.data()))
     } catch {
       unavailable = true
@@ -33,14 +38,12 @@
     }
   }
 
-  function readQuery() {
-    query = new URLSearchParams(window.location.search).get('q') ?? ''
-  }
-
-  onMount(readQuery)
-  afterNavigate(readQuery)
-
-  $effect(() => { runSearch(query) })
+  // afterNavigate fires on initial mount AND on subsequent navigations to this route
+  afterNavigate(() => {
+    const q = new URLSearchParams(window.location.search).get('q') ?? ''
+    query = q
+    runSearch(q)
+  })
 </script>
 
 <svelte:head>
