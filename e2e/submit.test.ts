@@ -1,9 +1,16 @@
 import { test, expect } from '@playwright/test'
 
-
 test.describe('submission form', () => {
+  let formEnabled = false
+
+  test.beforeAll(async ({ browser }) => {
+    const page = await browser.newPage()
+    await page.goto('./submit/')
+    formEnabled = await page.locator('[name="fields[name]"]').isVisible()
+    await page.close()
+  })
+
   test.beforeEach(async ({ page }) => {
-    // Intercept the Staticman POST and return a mock success response
     await page.route('**', async (route) => {
       if (route.request().method() === 'POST') {
         await route.fulfill({
@@ -19,13 +26,20 @@ test.describe('submission form', () => {
     await page.goto('./submit/')
   })
 
+  test('shows closed message when submissions are disabled', async ({ page }) => {
+    test.skip(formEnabled, 'showSubmitForm is enabled — closed state not applicable')
+    await expect(page.getByText('Submissions Closed')).toBeVisible()
+  })
+
   test('renders required fields', async ({ page }) => {
+    test.skip(!formEnabled, 'showSubmitForm is disabled')
     await expect(page.locator('[name="fields[name]"]')).toBeVisible()
     await expect(page.locator('[name="fields[summary]"]')).toBeVisible()
     await expect(page.locator('input[name="fields[category][]"]').first()).toBeVisible()
   })
 
   test('shows category error when submitting without a category', async ({ page }) => {
+    test.skip(!formEnabled, 'showSubmitForm is disabled')
     await page.fill('[name="fields[name]"]', 'Test Resource')
     await page.fill('[name="fields[summary]"]', 'A brief description.')
     await page.getByRole('button', { name: 'Submit Resource' }).click()
@@ -35,6 +49,7 @@ test.describe('submission form', () => {
   })
 
   test('submits form with correct fields to the configured Staticman URL', async ({ page }) => {
+    test.skip(!formEnabled, 'showSubmitForm is disabled')
     let capturedRequest: { url: string; body: string } | null = null
 
     await page.route('**', async (route) => {
@@ -61,7 +76,6 @@ test.describe('submission form', () => {
     await page.getByRole('button', { name: 'Submit Resource' }).click()
     await expect(page.locator('[data-testid="form-success"]')).toBeVisible()
 
-    // Verify the POST went to the configured Staticman endpoint
     expect(capturedRequest).not.toBeNull()
     expect(capturedRequest!.url).toContain('v3/entry')
     expect(capturedRequest!.body).toContain('My TTRPG Hack')
@@ -69,6 +83,7 @@ test.describe('submission form', () => {
   })
 
   test('shows success message after successful submission', async ({ page }) => {
+    test.skip(!formEnabled, 'showSubmitForm is disabled')
     await page.fill('[name="fields[name]"]', 'My Game')
     await page.fill('[name="fields[summary]"]', 'Great game.')
     await page.locator('input[name="fields[category][]"]').first().check()
@@ -78,7 +93,7 @@ test.describe('submission form', () => {
   })
 
   test('shows error message when submission fails', async ({ page }) => {
-    // Override the intercept to return a failure
+    test.skip(!formEnabled, 'showSubmitForm is disabled')
     await page.route('**', async (route) => {
       if (route.request().method() === 'POST') {
         await route.fulfill({ status: 500, body: 'Internal Server Error' })
