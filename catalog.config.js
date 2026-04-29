@@ -14,7 +14,7 @@ export default {
 
   // siteUrl: public URL of your deployed site. When set, the site title in
   // the footer links here. Leave commented out if not yet deployed.
-  siteUrl: "https://gulluth.github.io/jekyll-ttrpg-catalog",
+  siteUrl: "https://github.com/girtablu-gorlab/gorlab",
 
   // basePath: sub-path for GitHub Pages project sites (userid.github.io/repo).
   // Leave commented out for root deployments (userid.github.io or custom domain).

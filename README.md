@@ -1,9 +1,8 @@
-# jekyll-ttrpg-catalog
+# Girtablu's Gorlab
 
-A static content library framework for TTRPG games. Card-grid layout with live search, filtering, and dark/light mode. Deployable to GitHub Pages with no server required.
+A curious and unusual brick-a-brac, for curious and unusual folk.
 
-Fork of [jekyll-db](https://github.com/rypan/jekyll-db).
-
+Gorlab is a static content library framework for gamers. 
 
 ## Quick start
 
@@ -68,7 +67,7 @@ python csv_to_posts.py
 
 Categories are YAML values in the `category:` frontmatter field. The tag cloud and filter dropdowns are built automatically from all values present in `posts/`. No configuration needed to add a new one — just use it in a post.
 
-The default categories included with jekyll-ttrpg-catalog:
+The default categories included with gorlab:
 
 | Folder        | Intended use                                    |
 | ------------- | ----------------------------------------------- |
@@ -100,7 +99,7 @@ Edit `catalog.config.js`:
 
 ```js
 export default {
-  title: "My TTRPG Library",
+  title: "Meet Gorlab",
   // description: "",
   // theme: "cerberus",   // cerberus | wintry | vintage | crimson | pine | modern
   // postsPerPage: 24,

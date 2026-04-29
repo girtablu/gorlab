@@ -1,4 +1,4 @@
-# Contributing to jekyll-ttrpg-catalog
+# Contributing to gorlab
 
 This doc is for anyone who wants to modify the app: routes, components, data loading, theming, or tests. End users adding content or changing config don't need any of this — see [README.md](README.md).
 
@@ -93,7 +93,7 @@ To preview the built output locally:
 npm run preview
 ```
 
-Opens `http://localhost:4173`. The base path is `/jekyll-ttrpg-catalog/`, so the catalog is at `http://localhost:4173/jekyll-ttrpg-catalog/`.
+Opens `http://localhost:4173`. The base path is `/gorlab/`, so the catalog is at `http://localhost:4173/gorlab/`.
 
 
 ## Theming

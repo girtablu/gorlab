@@ -45,7 +45,7 @@ submissions:
   moderation: true
 
   # Name shown in notification emails / PR title
-  name: "jekyll-ttrpg-catalog submission"
+  name: "gorlab submission"
 
   # Destination directory for submitted files
   path: "posts/incoming"
