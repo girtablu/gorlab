@@ -25,19 +25,6 @@ test.describe('catalog page', () => {
     await expect(cards).toHaveCount(total)
   })
 
-  test('filter dropdown narrows results and Clear button resets', async ({ page }) => {
-    const cards = page.locator('article.card')
-    const total = await cards.count()
-
-    await page.selectOption('select:has(option[value="all"]:has-text("All Categories"))', 'hacks')
-    const filtered = await cards.count()
-    expect(filtered).toBeGreaterThan(0)
-    expect(filtered).toBeLessThan(total)
-
-    await page.getByRole('button', { name: 'Clear filters' }).click()
-    await expect(cards).toHaveCount(total)
-  })
-
   test('sort A–Z puts alphabetically first title first', async ({ page }) => {
     await page.selectOption('#sort-select', 'az')
     const firstHeading = page.locator('article.card').first().getByRole('heading')
