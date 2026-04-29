@@ -27,8 +27,8 @@
         {/if}
         {#if post.genre || post.license}
           <div class="flex flex-wrap gap-1.5">
-            {#if post.genre}<span class="chip preset-tonal text-xs">{post.genre}</span>{/if}
-            {#if post.license}<span class="chip preset-tonal text-xs">{post.license}</span>{/if}
+            {#if post.genre}<a href="{base}/search/?q={encodeURIComponent(post.genre)}" class="chip preset-tonal text-xs">{post.genre}</a>{/if}
+            {#if post.license}<a href="{base}/search/?q={encodeURIComponent(post.license)}" class="chip preset-tonal text-xs">{post.license}</a>{/if}
           </div>
         {/if}
       </div>
