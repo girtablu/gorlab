@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
   import { base } from '$app/paths'
 
   let query = $state('')
@@ -7,7 +6,7 @@
   function handleSubmit(e: Event) {
     e.preventDefault()
     if (query.trim()) {
-      goto(`${base}/search/?q=${encodeURIComponent(query.trim())}`)
+      window.location.assign(`${base}/search/?q=${encodeURIComponent(query.trim())}`)
     }
   }
 </script>

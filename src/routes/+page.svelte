@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount, untrack } from 'svelte'
-  import { replaceState } from '$app/navigation'
   import { applyFilters, sortPosts, paginate } from '$lib/filters.js'
   import type { SortOption } from '$lib/filters.js'
   import CardGrid from '$lib/CardGrid.svelte'
@@ -47,7 +46,7 @@
     if (filterCost !== 'all') p.set('cost', filterCost)
     if (sort !== 'newest') p.set('sort', sort)
     const qs = p.toString()
-    replaceState(qs ? `?${qs}` : '?', {})
+    history.replaceState(history.state, '', qs ? `?${qs}` : location.pathname)
   })
 
   const filtered = $derived(
