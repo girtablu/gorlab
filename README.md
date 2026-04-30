@@ -20,7 +20,7 @@ Filename format: `YYYY-MM-DD-slug.md`
 ```yaml
 ---
 name: My Resource Title       # required
-category:                     # required — drives tag cloud and filters
+category:                     # recommended — drives tag cloud and filters
   - systems
 author: Author Name
 source: itch.io

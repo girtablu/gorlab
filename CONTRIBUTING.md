@@ -12,7 +12,7 @@ The codebase has two distinct layers that should never blur:
 | **App**     | `src/` — routes, components, data loading, styles | Developer   |
 | **Content** | `posts/`, `catalog.config.js`, `staticman.yml`    | Site owner  |
 
-SvelteKit prebuilds every route at build time (fully static output to `_site/`). There is no server at runtime.
+SvelteKit prebuilds every route at build time (fully static output to `build/`). There is no server at runtime.
 
 ```
 src/
@@ -31,7 +31,7 @@ src/
 │       └── +server.ts         # prerendered RSS 2.0 feed
 └── lib/
     ├── posts.ts               # parsePosts(), getCategories(), normalizeSubtexts()
-    ├── filters.ts             # applySearch(), applyFilters(), sortPosts(), paginate()
+    ├── filters.ts             # applyFilters(), sortPosts(), paginate(), getAuthors/Genres/Costs()
     ├── catalog.ts             # reads catalog.config.js, applies defaults
     ├── config.ts              # TypeScript interfaces (CatalogConfig, CustomField, …)
     ├── CardGrid.svelte        # responsive grid, empty state
@@ -76,7 +76,7 @@ npm run build
 npm run test:e2e
 ```
 
-Playwright starts `vite preview` automatically against the built `_site/` output and runs tests in Chromium on desktop (1280px) and mobile (375px) viewports.
+Playwright starts `vite preview` automatically against the built `build/` output and runs tests in Chromium on desktop (1280px) and mobile (375px) viewports.
 
 
 ## Building
@@ -85,7 +85,7 @@ Playwright starts `vite preview` automatically against the built `_site/` output
 npm run build
 ```
 
-Outputs a fully static site to `_site/`. Every route is prerendered: the catalog index, one HTML file per resource slug, the submission form, and the RSS feed.
+Outputs a fully static site to `build/`. Every route is prerendered: the catalog index, one HTML file per resource slug, the submission form, and the RSS feed. If `posts/` is empty or absent the build still succeeds — resource pages are simply skipped and the catalog renders its empty state.
 
 To preview the built output locally:
 
@@ -93,7 +93,7 @@ To preview the built output locally:
 npm run preview
 ```
 
-Opens `http://localhost:4173`. The base path is `/gorlab/`, so the catalog is at `http://localhost:4173/gorlab/`.
+Opens `http://localhost:4173`. If `basePath` is set in `catalog.config.js` (required for GitHub Pages project sites), the catalog will be at `http://localhost:4173/<basePath>/` instead.
 
 
 ## Theming
@@ -130,6 +130,20 @@ Site owners who don't have access to `src/` can use the `customCss` config optio
 ### Dark mode
 
 Dark mode uses `localStorage` + a `$effect` in `+layout.svelte`. The header toggle adds `.dark` to `<html>` and persists the preference. The `@custom-variant dark` rule in `src/app.css` scopes all dark styles to `.dark` descendants. To change the strategy, update the effect in `src/routes/+layout.svelte`.
+
+
+## Design principles
+
+Three principles define the boundary between app responsibility and operator responsibility. Keep them in mind when adding features.
+
+**1. Graceful degradation over required fields.**
+`name` is the only frontmatter field the app enforces. Every other field — `category`, `summary`, `author`, cover image, and so on — degrades cleanly when absent. Components use `{#if}` guards; `posts.ts` normalises missing values to `null` or `[]`. Never add a hard dependency on an optional field.
+
+**2. The build succeeds with no content.**
+An empty or absent `posts/` directory is valid. The catalog renders its empty state; the search index step is skipped. This is intentional: the app is the developer's responsibility; the content is the operator's. A broken build caused by missing content is a framework bug, not a content error.
+
+**3. Features are operator-controlled via `catalog.config.js`.**
+Nearly every UI feature is a toggle (`showCost`, `showTagCloud`, `showFilterBar`, `showSubmitForm`, per-dimension `filters`). When adding an optional feature, expose a toggle in `catalog.config.js` and default it to the least-surprising state. Do not hardcode feature presence.
 
 
 ## Component conventions
