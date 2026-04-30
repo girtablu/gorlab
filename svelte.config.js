@@ -16,6 +16,7 @@ const config = {
       strict: true,
     }),
     paths: { base },
+    prerender: { handleUnseenRoutes: 'ignore' },
   },
 }
 
