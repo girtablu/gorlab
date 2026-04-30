@@ -1,6 +1,6 @@
 ---
 category:
-  - system
+  - systems
 name: Vaults of Vaarn
 author: Leo Hunt
 source: Vaults of Vaarn

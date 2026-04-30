@@ -25,9 +25,14 @@
 </script>
 
 <svelte:head>
-    <link rel="alternate" type="application/rss+xml" title={config.title} href="{base}/feed.xml" />
+    <link
+        rel="alternate"
+        type="application/rss+xml"
+        title={config.title}
+        href="{base}/feed.xml"
+    />
     {#if config.customCss}
-    <link rel="stylesheet" href="{base}{config.customCss}" />
+        <link rel="stylesheet" href="{base}{config.customCss}" />
     {/if}
 </svelte:head>
 
@@ -41,7 +46,7 @@
         >
             {config.title}
         </a>
-        <div class="w-full max-w-sm">
+        <div class="w-36 sm:w-56 md:w-72 lg:w-[32rem]">
             <SearchInput />
         </div>
         <div class="justify-self-end flex items-center gap-3">
@@ -98,12 +103,22 @@
         class="border-t border-surface-200-800 px-4 py-3 text-xs opacity-40 text-center flex flex-wrap justify-center gap-x-4 gap-y-1"
     >
         {#if config.siteUrl}
-            <a href={config.siteUrl} class="hover:opacity-80" target="_blank" rel="noopener">{config.title}</a>
+            <a
+                href={config.siteUrl}
+                class="hover:opacity-80"
+                target="_blank"
+                rel="noopener">{config.title}</a
+            >
         {:else}
             <span>{config.title}</span>
         {/if}
         {#if __COMMIT_URL__}
-            <a href={__COMMIT_URL__} class="hover:opacity-80" target="_blank" rel="noopener">#{__COMMIT_SHA__}</a>
+            <a
+                href={__COMMIT_URL__}
+                class="hover:opacity-80"
+                target="_blank"
+                rel="noopener">#{__COMMIT_SHA__}</a
+            >
         {:else}
             <span>#{__COMMIT_SHA__}</span>
         {/if}

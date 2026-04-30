@@ -45,15 +45,12 @@ test.describe('catalog page', () => {
   test('category URL param pre-filters results', async ({ page }) => {
     await page.goto('./?category=monsters')
     const cards = page.locator('article.card')
-    const total = await cards.count()
-    expect(total).toBeGreaterThan(0)
+    await expect(cards.first()).toBeVisible()
 
-    // All visible cards must belong to the monsters category
-    const chips = page.locator('article.card .chip')
-    const count = await chips.count()
-    for (let i = 0; i < count; i++) {
-      const text = await chips.nth(i).textContent()
-      expect(text?.toLowerCase()).toContain('monsters')
+    // Every card must have at least one chip containing 'monsters'
+    for (const card of await cards.all()) {
+      const chipTexts = await card.locator('.chip').allTextContents()
+      expect(chipTexts.some(t => t.toLowerCase().includes('monsters'))).toBe(true)
     }
   })
 })

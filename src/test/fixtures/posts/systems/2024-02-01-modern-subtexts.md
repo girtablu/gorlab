@@ -1,7 +1,8 @@
 ---
 name: Modern Subtexts Game
 category:
-  - hacks
+  - systems
+author: John Doe
 summary: A game using the new subtexts array.
 featured: true
 sort_priority: 2

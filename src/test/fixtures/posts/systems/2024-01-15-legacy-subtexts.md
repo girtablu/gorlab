@@ -1,7 +1,7 @@
 ---
 name: Legacy Subtexts Game
 category:
-  - hacks
+  - systems
 author: Test Author
 source: itch.io
 source-url: https://example.itch.io/legacy

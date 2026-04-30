@@ -1,6 +1,6 @@
 ---
 category:
-  - system
+  - systems
 name: Black Sword Hack
 genre: sword and sorcery
 cost: €16.00

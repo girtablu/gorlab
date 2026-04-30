@@ -21,7 +21,7 @@ Filename format: `YYYY-MM-DD-slug.md`
 ---
 name: My Resource Title       # required
 category:                     # required — drives tag cloud and filters
-  - hacks
+  - systems
 author: Author Name
 source: itch.io
 source-url: https://author.itch.io/my-resource
@@ -73,7 +73,7 @@ The default categories included with gorlab:
 | ------------- | ----------------------------------------------- |
 | `monsters/`   | Stat blocks and creature descriptions           |
 | `npcs/`       | Named characters and factions                   |
-| `hacks/`      | Games, rulebooks, and supplements               |
+| `systems/`      | Games, rulebooks, and supplements             |
 | `miscellany/` | Tables, generators, handouts, and anything else |
 
 ### Adding a custom category
@@ -110,7 +110,7 @@ export default {
   // basePath: '/my-repo-name',   // for GitHub Pages project sites (userid.github.io/my-repo)
                                   // leave commented out for root deployments
 
-  categories: ["hacks", "monsters", "npcs", "miscellany"],
+  categories: ["systems", "monsters", "npcs", "miscellany"],
 }
 ```
 
