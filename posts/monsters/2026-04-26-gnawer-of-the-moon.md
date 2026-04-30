@@ -13,6 +13,7 @@ summary: >-
 stats: >-
   HD 3, Armour 13, Morale 4, Appearing d8, Attacks: Bite (d8) + Claw (d6),
   Biological
+cover-image: '/covers/gnawer-of-the-moon.webp'
 subtexts:
   - >-
     • Grey and white, with robust hind legs, a lengthy tail, and distinctive
@@ -26,4 +27,3 @@ subtexts:
     Autarch menageries fail to thrive — graceful lunar movement is hobbled by
     the stronger gravity of the mother-sphere.
 ---
-

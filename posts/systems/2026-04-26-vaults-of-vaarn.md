@@ -1,6 +1,6 @@
 ---
 category:
-  - hacks
+  - systems
 name: Vaults of Vaarn
 author: Leo Hunt
 source: Vaults of Vaarn

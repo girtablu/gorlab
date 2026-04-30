@@ -1,6 +1,6 @@
 ---
 category:
-  - hacks
+  - systems
 name: Into the ODD
 genre: weird sci-fi
 cost: $42.00
@@ -16,4 +16,3 @@ subtexts:
   - ''
   - ''
 ---
-

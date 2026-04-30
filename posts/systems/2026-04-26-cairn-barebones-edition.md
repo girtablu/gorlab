@@ -1,6 +1,6 @@
 ---
 category:
-  - hacks
+  - systems
 name: 'Cairn: Barebones Edition'
 genre: fantasy
 cost: $10.00
