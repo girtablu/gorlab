@@ -8,14 +8,6 @@ const REAL_POSTS = join(import.meta.dirname, "../../posts");
 describe("parsePosts — real _posts/", () => {
   const posts = parsePosts(REAL_POSTS);
 
-  it("returns at least one post per sample category", () => {
-    const cats = posts.flatMap((p) => p.category);
-    expect(cats).toContain("systems");
-    expect(cats).toContain("monsters");
-    expect(cats).toContain("npcs");
-    expect(cats).toContain("miscellany");
-  });
-
   it("every post has a non-empty name", () => {
     expect(
       posts.every((p) => typeof p.name === "string" && p.name.length > 0),
@@ -36,8 +28,6 @@ describe("parsePosts — real _posts/", () => {
 
   it("slug is derived from filename without date prefix", () => {
     const slugs = posts.map((p) => p.slug);
-    expect(slugs).toContain("basilisk");
-    expect(slugs).toContain("black-sword-hack");
     slugs.forEach((s) => expect(s).not.toMatch(/^\d{4}-\d{2}-\d{2}-/));
   });
 
@@ -127,7 +117,6 @@ describe("getCategories", () => {
     const real = parsePosts(REAL_POSTS);
     const cats = getCategories(real);
     expect(cats).toEqual([...cats].sort());
-    expect(cats).toContain("systems");
     expect(cats).not.toContain("incoming");
   });
 });

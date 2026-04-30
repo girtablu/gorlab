@@ -16,7 +16,7 @@ test.describe('catalog page', () => {
     const total = await cards.count()
 
     const tagCloud = page.getByRole('group', { name: 'Filter by category' })
-    await tagCloud.getByRole('button', { name: 'monsters' }).click()
+    await tagCloud.getByRole('button').filter({ hasNotText: 'All' }).first().click()
     const filtered = await cards.count()
     expect(filtered).toBeGreaterThan(0)
     expect(filtered).toBeLessThan(total)
@@ -25,32 +25,41 @@ test.describe('catalog page', () => {
     await expect(cards).toHaveCount(total)
   })
 
-  test('sort A–Z puts alphabetically first title first', async ({ page }) => {
+  test('sort A–Z orders cards alphabetically ascending', async ({ page }) => {
     await page.selectOption('#sort-select', 'az')
-    const firstHeading = page.locator('article.card').first().getByRole('heading')
-    await expect(firstHeading).toContainText('Basilisk')
+    await page.locator('article.card').first().waitFor()
+    const headings = await page.locator('article.card').getByRole('heading').allTextContents()
+    expect(headings.length).toBeGreaterThan(1)
+    const sorted = [...headings].sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+    expect(headings).toEqual(sorted)
   })
 
-  test('sort Z–A puts alphabetically last title first', async ({ page }) => {
+  test('sort Z–A orders cards alphabetically descending', async ({ page }) => {
     await page.selectOption('#sort-select', 'za')
-    const firstHeading = page.locator('article.card').first().getByRole('heading')
-    await expect(firstHeading).toContainText('Vaults of Vaarn')
+    await page.locator('article.card').first().waitFor()
+    const headings = await page.locator('article.card').getByRole('heading').allTextContents()
+    expect(headings.length).toBeGreaterThan(1)
+    const sorted = [...headings].sort((a, b) => b.toLowerCase().localeCompare(a.toLowerCase()))
+    expect(headings).toEqual(sorted)
   })
 
   test('pagination is hidden when all posts fit on one page', async ({ page }) => {
-    // Default postsPerPage is 24; only 8 posts exist, so pagination should not render
+    // Pagination renders only when post count exceeds postsPerPage (default 24)
     await expect(page.locator('nav[aria-label*="pagination"]')).not.toBeVisible()
   })
 
   test('category URL param pre-filters results', async ({ page }) => {
-    await page.goto('./?category=monsters')
-    const cards = page.locator('article.card')
-    await expect(cards.first()).toBeVisible()
+    // Pick the first available category from the tag cloud rather than hardcoding one
+    const tagCloud = page.getByRole('group', { name: 'Filter by category' })
+    const categoryButton = tagCloud.getByRole('button').filter({ hasNotText: 'All' }).first()
+    const category = (await categoryButton.textContent())!.trim()
 
-    // Every card must have at least one chip containing 'monsters'
-    for (const card of await cards.all()) {
+    await page.goto(`./?category=${encodeURIComponent(category)}`)
+    await expect(page.locator('article.card').first()).toBeVisible()
+
+    for (const card of await page.locator('article.card').all()) {
       const chipTexts = await card.locator('.chip').allTextContents()
-      expect(chipTexts.some(t => t.toLowerCase().includes('monsters'))).toBe(true)
+      expect(chipTexts.some(t => t.trim().toLowerCase() === category.toLowerCase())).toBe(true)
     }
   })
 })
