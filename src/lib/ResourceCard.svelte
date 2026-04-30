@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Post } from './posts.js'
   import { base } from '$app/paths'
+  import { config } from './catalog.js'
 
   let { post }: { post: Post } = $props()
 
@@ -72,7 +73,7 @@
         <span class="chip preset-tonal text-xs">{cat}</span>
         {/each}
 
-        {#if post.cost}
+        {#if config.showCost && post.cost}
         <span class="text-xs ml-auto opacity-60">{post.cost}</span>
         {/if}
       </div>

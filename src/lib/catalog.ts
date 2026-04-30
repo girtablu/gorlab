@@ -28,6 +28,9 @@ export const config = {
   // Custom fields
   customFields: cfg.customFields ?? ([] as CustomField[]),
 
+  // Custom stylesheet
+  customCss: cfg.customCss ?? null,
+
   // Community submissions
   showSubmitForm: cfg.showSubmitForm ?? false,
   staticmanUrl: cfg.staticmanUrl ?? "",

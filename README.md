@@ -119,20 +119,45 @@ All settings except `title` and `categories` are optional — the app has workin
 
 ## Theming
 
+### Preset themes
+
 Change `theme` in `catalog.config.js` to any of the bundled presets:
 
-| Name       | Character             |
-| ---------- | --------------------- |
-| `cerberus` | Dark, moody (default) |
-| `wintry`   | Cool blues            |
-| `vintage`  | Warm, aged            |
-| `crimson`  | Red, horror           |
-| `pine`     | Earthy greens         |
-| `modern`   | Clean, minimal        |
+| Name       | Character          |
+| ---------- | ------------------ |
+| `cerberus` | Dark, moody        |
+| `wintry`   | Cool blues         |
+| `vintage`  | Warm, aged         |
+| `crimson`  | Red, horror        |
+| `pine`     | Earthy greens      |
+| `modern`   | Clean, minimal     |
 
-Push the config change and GitHub Actions deploys it.
+The default is `vintage`. Push the config change and GitHub Actions deploys it.
 
-To create a custom theme or add more presets, see [CONTRIBUTING.md](CONTRIBUTING.md).
+### Custom themes
+
+You can create a fully custom theme using the [Skeleton UI Theme Generator](https://themes.skeleton.dev/). Customize colors, fonts, and border radius, then export the generated CSS.
+
+1. Save the exported CSS file to `static/` in your repo — e.g. `static/my-theme.css`
+2. In `catalog.config.js`, set both `theme` and `customCss`:
+
+```js
+theme: "my-theme",        // must match the theme name inside the CSS file
+customCss: "/my-theme.css",
+```
+
+3. Push — the theme loads automatically alongside the app styles.
+
+### Custom CSS
+
+To add your own styles on top of the active theme without replacing it — custom fonts, card tweaks, spacing adjustments — create a CSS file in `static/` and point to it:
+
+```js
+// catalog.config.js
+customCss: "/my-styles.css",
+```
+
+The file is loaded after the app styles so your rules take precedence. The `theme` setting is independent — you can use both together.
 
 
 ## Deployment (GitHub Pages)

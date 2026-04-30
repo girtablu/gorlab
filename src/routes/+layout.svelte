@@ -9,6 +9,11 @@
     let dark = $state(false);
 
     $effect(() => {
+        document.body.setAttribute("data-theme", config.theme);
+        return () => document.body.removeAttribute("data-theme");
+    });
+
+    $effect(() => {
         dark = document.documentElement.classList.contains("dark");
     });
 
@@ -21,6 +26,9 @@
 
 <svelte:head>
     <link rel="alternate" type="application/rss+xml" title={config.title} href="{base}/feed.xml" />
+    {#if config.customCss}
+    <link rel="stylesheet" href="{base}{config.customCss}" />
+    {/if}
 </svelte:head>
 
 <div data-theme={config.theme} class="min-h-screen flex flex-col">

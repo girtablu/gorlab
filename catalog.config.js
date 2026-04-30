@@ -14,14 +14,14 @@ export default {
 
   // siteUrl: public URL of your deployed site. When set, the site title in
   // the footer links here. Leave commented out if not yet deployed.
-  siteUrl: "https://github.com/girtablu-gorlab/gorlab",
+  siteUrl: "https://github.com/girtablu/gorlab",
 
   // basePath: sub-path for GitHub Pages project sites (userid.github.io/repo).
   // Leave commented out for root deployments (userid.github.io or custom domain).
   // basePath: '/gorlab',
 
   // ── Appearance ────────────────────────────────────────────────────────────
-  // theme: "vintage",   // cerberus | wintry | vintage | crimson | pine | modern
+  // theme: "vintage", // cerberus | wintry | vintage | crimson | pine | modern
 
   // ── Content display ───────────────────────────────────────────────────────
   // postsPerPage: 24,
@@ -90,5 +90,5 @@ export default {
   // categories: options presented to submitters in the submission form.
   // This does NOT restrict what the app displays — posts in any category appear
   // automatically. This list only controls what submitters can choose from.
-  categories: ["hacks", "monsters", "npcs", "miscellany"],
+  categories: ["systems", "adventures", "monsters", "miscellany"],
 };

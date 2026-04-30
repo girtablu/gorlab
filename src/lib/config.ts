@@ -25,4 +25,5 @@ export interface CatalogConfig {
   basePath?: string
   showCost?: boolean
   siteUrl?: string
+  customCss?: string
 }

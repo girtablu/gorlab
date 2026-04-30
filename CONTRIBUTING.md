@@ -98,42 +98,38 @@ Opens `http://localhost:4173`. The base path is `/gorlab/`, so the catalog is at
 
 ## Theming
 
-The app uses [Skeleton UI](https://skeleton.dev) v4. Themes are CSS files that set Skeleton's custom properties. Tailwind utility classes in components reference those properties, so swapping a theme reskins the entire app without touching component code.
+The app uses [Skeleton UI](https://skeleton.dev) v4. Themes are CSS files that define Skeleton's custom properties under a `[data-theme='name']` selector. Tailwind utility classes in components reference those properties, so swapping a theme reskins the entire app without touching component code.
 
-The active theme is set via the `theme` key in `catalog.config.js`:
+`+layout.svelte` sets `data-theme` on `<body>` at runtime via a `$effect`, which makes Skeleton's global styles (background color, base typography) pick up the theme correctly. The `theme` key in `catalog.config.js` controls which value is applied.
 
-```js
-theme: "cerberus",   // cerberus | wintry | vintage | crimson | pine | modern
+### Bundled presets
+
+Six presets are imported in `src/app.css`: `cerberus`, `wintry`, `vintage`, `crimson`, `pine`, `modern`. The default is `vintage`.
+
+To add more Skeleton presets, import them in `src/app.css`:
+
+```css
+@import '@skeletonlabs/skeleton/themes/mona';
 ```
 
-This sets `data-theme="cerberus"` on the root element at runtime.
+Full preset list: `cerberus`, `wintry`, `vintage`, `crimson`, `pine`, `modern`, `mona`, `vox`, `seafoam`, `mint`, `rocket`, `concord`, `nouveau`, `legacy`, `sahara`, `hamlindigo`, `rose`, `fennec`, `nosh`, `terminus`, `reign`, `catppuccin`.
 
-### Creating a custom theme
+### Adding a custom theme (developer path)
 
-1. Open the [Skeleton Theme Generator](https://themes.skeleton.dev/)
-2. Customize colors, radius, fonts, and give the theme a name.
-3. Click **Code → Copy** to get the generated CSS.
-4. Save it anywhere (e.g. `src/my-theme.css`) and import it in `src/app.css`:
+1. Open the [Skeleton Theme Generator](https://themes.skeleton.dev/), customize, and copy the generated CSS.
+2. Save it (e.g. `src/my-theme.css`) and import it in `src/app.css`:
 
 ```css
 @import './my-theme.css';
 ```
 
-5. Set `theme: "my-theme"` in `catalog.config.js`.
+3. Set `theme: "my-theme"` in `catalog.config.js`.
 
-### Available preset themes
-
-Skeleton ships many preset themes. Import what you need in `src/app.css`:
-
-```css
-@import '@skeletonlabs/skeleton/themes/wintry';
-```
-
-Included presets: `cerberus`, `wintry`, `vintage`, `crimson`, `pine`, `modern`, `mona`, `vox`, `seafoam`, `mint`, `rocket`, `concord`, `nouveau`, `legacy`, `sahara`, `hamlindigo`, `rose`, `fennec`, `nosh`, `terminus`, `reign`, `catppuccin`.
+Site owners who don't have access to `src/` can use the `customCss` config option instead — see `README.md`.
 
 ### Dark mode
 
-Dark mode uses `localStorage` + a `$effect` in `+layout.svelte`. The header toggle flips `color-scheme: dark/light` on the root and persists it. To change the strategy, update the effect in `src/routes/+layout.svelte`.
+Dark mode uses `localStorage` + a `$effect` in `+layout.svelte`. The header toggle adds `.dark` to `<html>` and persists the preference. The `@custom-variant dark` rule in `src/app.css` scopes all dark styles to `.dark` descendants. To change the strategy, update the effect in `src/routes/+layout.svelte`.
 
 
 ## Component conventions
