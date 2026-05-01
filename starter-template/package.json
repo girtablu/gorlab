@@ -1,0 +1,14 @@
+{
+  "name": "my-catalog",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "gorlab build",
+    "dev": "gorlab dev",
+    "preview": "gorlab preview"
+  },
+  "dependencies": {
+    "@girtablu/gorlab": "^0.1.0"
+  }
+}
