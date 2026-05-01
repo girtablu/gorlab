@@ -1,4 +1,6 @@
 /src
+/svelte.config.js
+/vite.config.ts
 /.svelte-kit
 /build
 /node_modules
