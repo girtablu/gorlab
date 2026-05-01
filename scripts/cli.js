@@ -81,7 +81,7 @@ switch (command) {
     const templateDir = join(packageRoot, 'starter-template')
 
     // npm strips leading dots from filenames when packing; restore them on copy
-    const DOTFILE_MAP = { 'gitignore': '.gitignore', 'npmrc': '.npmrc' }
+    const DOTFILE_MAP = { 'gitignore': '.gitignore' }
 
     function copyDir(src, dest) {
       mkdirSync(dest, { recursive: true })
