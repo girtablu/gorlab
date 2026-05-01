@@ -10,7 +10,7 @@ summary: >-
 author: Chris McDowall
 source: freeleague
 source-url: 'https://freeleaguepublishing.com/games/into-the-odd/'
-cover-image: https://thegaminggang.com/wp-content/webp-express/webp-images/uploads/2022/06/into-the-odd-remastered-300x485.jpg.webp
+cover-image: /covers/into-the-odd.webp
 subtexts:
   - ''
   - ''
