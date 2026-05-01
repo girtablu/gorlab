@@ -90,12 +90,12 @@ category:
   - miscellany
 ```
 
-To make a new category available in the community submission form, also add it to `categories` in `catalog.config.js`.
+To make a new category available in the community submission form, also add it to `categories` in `gorlab.config.js`.
 
 
 ## Configuration
 
-Edit `catalog.config.js`:
+Edit `gorlab.config.js`:
 
 ```js
 export default {
@@ -121,7 +121,7 @@ All settings except `title` and `categories` are optional — the app has workin
 
 ### Preset themes
 
-Change `theme` in `catalog.config.js` to any of the bundled presets:
+Change `theme` in `gorlab.config.js` to any of the bundled presets:
 
 | Name       | Character          |
 | ---------- | ------------------ |
@@ -139,7 +139,7 @@ The default is `vintage`. Push the config change and GitHub Actions deploys it.
 You can create a fully custom theme using the [Skeleton UI Theme Generator](https://themes.skeleton.dev/). Customize colors, fonts, and border radius, then export the generated CSS.
 
 1. Save the exported CSS file to `static/` in your repo — e.g. `static/my-theme.css`
-2. In `catalog.config.js`, set both `theme` and `customCss`:
+2. In `gorlab.config.js`, set both `theme` and `customCss`:
 
 ```js
 theme: "my-theme",        // must match the theme name inside the CSS file
@@ -153,7 +153,7 @@ customCss: "/my-theme.css",
 To add your own styles on top of the active theme without replacing it — custom fonts, card tweaks, spacing adjustments — create a CSS file in `static/` and point to it:
 
 ```js
-// catalog.config.js
+// gorlab.config.js
 customCss: "/my-styles.css",
 ```
 
@@ -168,7 +168,7 @@ The included GitHub Actions workflow (`.github/workflows/build.yml`) handles dep
 2. Set **Source** to **GitHub Actions**
 3. Push to `main` — the workflow builds and deploys
 
-For project pages (e.g. `username.github.io/my-repo`), uncomment `basePath` in `catalog.config.js` and set it to `'/my-repo'`.
+For project pages (e.g. `username.github.io/my-repo`), uncomment `basePath` in `gorlab.config.js` and set it to `'/my-repo'`.
 
 
 ## Submission form
@@ -178,8 +178,8 @@ The submit page (`/submit/`) uses [Staticman](https://staticman.net/) to accept 
 To enable:
 
 1. Add the [staticmanapp](https://github.com/apps/staticman-net) GitHub App to your repo
-2. Update `staticmanUrl` in `catalog.config.js` with your repo details
-3. Set `showSubmitForm: true` in `catalog.config.js`
+2. Update `staticmanUrl` in `gorlab.config.js` with your repo details
+3. Set `showSubmitForm: true` in `gorlab.config.js`
 
 
 ## Reviewing submissions

@@ -1,6 +1,6 @@
 import adapter from '@sveltejs/adapter-static'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
-import catalogConfig from './catalog.config.js'
+import catalogConfig from './gorlab.config.js'
 
 const base = catalogConfig.basePath ?? ''
 

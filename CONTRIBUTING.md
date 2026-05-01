@@ -10,7 +10,7 @@ The codebase has two distinct layers that should never blur:
 | Layer       | Location                                          | Who owns it |
 | ----------- | ------------------------------------------------- | ----------- |
 | **App**     | `src/` — routes, components, data loading, styles | Developer   |
-| **Content** | `posts/`, `catalog.config.js`, `staticman.yml`    | Site owner  |
+| **Content** | `posts/`, `gorlab.config.js`, `staticman.yml`    | Site owner  |
 
 SvelteKit prebuilds every route at build time (fully static output to `build/`). There is no server at runtime.
 
@@ -32,7 +32,7 @@ src/
 └── lib/
     ├── posts.ts               # parsePosts(), getCategories(), normalizeSubtexts()
     ├── filters.ts             # applyFilters(), sortPosts(), paginate(), getAuthors/Genres/Costs()
-    ├── catalog.ts             # reads catalog.config.js, applies defaults
+    ├── catalog.ts             # reads gorlab.config.js, applies defaults
     ├── config.ts              # TypeScript interfaces (CatalogConfig, CustomField, …)
     ├── CardGrid.svelte        # responsive grid, empty state
     ├── ResourceCard.svelte    # card with cover image / gradient placeholder
@@ -93,14 +93,14 @@ To preview the built output locally:
 npm run preview
 ```
 
-Opens `http://localhost:4173`. If `basePath` is set in `catalog.config.js` (required for GitHub Pages project sites), the catalog will be at `http://localhost:4173/<basePath>/` instead.
+Opens `http://localhost:4173`. If `basePath` is set in `gorlab.config.js` (required for GitHub Pages project sites), the catalog will be at `http://localhost:4173/<basePath>/` instead.
 
 
 ## Theming
 
 The app uses [Skeleton UI](https://skeleton.dev) v4. Themes are CSS files that define Skeleton's custom properties under a `[data-theme='name']` selector. Tailwind utility classes in components reference those properties, so swapping a theme reskins the entire app without touching component code.
 
-`+layout.svelte` sets `data-theme` on `<body>` at runtime via a `$effect`, which makes Skeleton's global styles (background color, base typography) pick up the theme correctly. The `theme` key in `catalog.config.js` controls which value is applied.
+`+layout.svelte` sets `data-theme` on `<body>` at runtime via a `$effect`, which makes Skeleton's global styles (background color, base typography) pick up the theme correctly. The `theme` key in `gorlab.config.js` controls which value is applied.
 
 ### Bundled presets
 
@@ -123,7 +123,7 @@ Full preset list: `cerberus`, `wintry`, `vintage`, `crimson`, `pine`, `modern`, 
 @import './my-theme.css';
 ```
 
-3. Set `theme: "my-theme"` in `catalog.config.js`.
+3. Set `theme: "my-theme"` in `gorlab.config.js`.
 
 Site owners who don't have access to `src/` can use the `customCss` config option instead — see `README.md`.
 
@@ -142,8 +142,8 @@ Three principles define the boundary between app responsibility and operator res
 **2. The build succeeds with no content.**
 An empty or absent `posts/` directory is valid. The catalog renders its empty state; the search index step is skipped. This is intentional: the app is the developer's responsibility; the content is the operator's. A broken build caused by missing content is a framework bug, not a content error.
 
-**3. Features are operator-controlled via `catalog.config.js`.**
-Nearly every UI feature is a toggle (`showCost`, `showTagCloud`, `showFilterBar`, `showSubmitForm`, per-dimension `filters`). When adding an optional feature, expose a toggle in `catalog.config.js` and default it to the least-surprising state. Do not hardcode feature presence.
+**3. Features are operator-controlled via `gorlab.config.js`.**
+Nearly every UI feature is a toggle (`showCost`, `showTagCloud`, `showFilterBar`, `showSubmitForm`, per-dimension `filters`). When adding an optional feature, expose a toggle in `gorlab.config.js` and default it to the least-surprising state. Do not hardcode feature presence.
 
 
 ## Component conventions

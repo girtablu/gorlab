@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
-import catalogConfig from './catalog.config.js'
+import catalogConfig from './gorlab.config.js'
 
 const base: string = (catalogConfig as { basePath?: string }).basePath ?? ''
 const origin = 'http://localhost:4173'

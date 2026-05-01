@@ -1,4 +1,4 @@
-import rawConfig from "../../catalog.config.js";
+import rawConfig from "../../gorlab.config.js";
 import type { CatalogConfig, CustomField, FilterDimension } from "./config.js";
 
 const cfg = rawConfig as CatalogConfig;

@@ -68,7 +68,7 @@
     <h1 class="h2 mb-2">Submit a Resource</h1>
     <p class="opacity-60">The submission form has not been configured yet.</p>
     <p class="text-sm opacity-40 mt-2 italic">
-      Set <code>staticmanUrl</code> in <code>catalog.config.js</code> to enable submissions.
+      Set <code>staticmanUrl</code> in <code>gorlab.config.js</code> to enable submissions.
     </p>
 
   {:else if status === 'success'}
@@ -225,7 +225,7 @@
         <p class="text-xs opacity-50 mt-1">Separate multiple tags with commas.</p>
       </label>
 
-      <!-- Custom fields from catalog.config.js -->
+      <!-- Custom fields from gorlab.config.js -->
       {#each config.customFields as field}
         <label class="label">
           <span class="label-text">{field.label}</span>
