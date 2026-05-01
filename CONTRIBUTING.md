@@ -202,4 +202,4 @@ PRs that add posts with external `cover-image` URLs are processed by `.github/wo
 
 **`gh_pages` lifecycle (pre-npm):** Currently a full-framework branch with demo posts and its own copy of the app. It is not a consumer of the npm package yet — that restructure happens after v0.1.0 ships.
 
-**`gh_pages` lifecycle (post-npm):** Once `@gulluth/gorlab` is published, `gh_pages` will be restructured as a real end-user project — identical in shape to `gorlab-starter`. All framework files (`src/`, `e2e/`, `svelte.config.js`, etc.) will be removed; the branch will depend on the package via `package.json`. App updates flow through version bumps only, never merges from `main`.
+**`gh_pages` lifecycle (post-npm):** Once `@girtablu/gorlab` is published, `gh_pages` will be restructured as a real end-user project — identical in shape to `gorlab-starter`. All framework files (`src/`, `e2e/`, `svelte.config.js`, etc.) will be removed; the branch will depend on the package via `package.json`. App updates flow through version bumps only, never merges from `main`.
