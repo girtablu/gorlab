@@ -19,7 +19,7 @@ export interface CatalogConfig {
   showTagCloud?: boolean
   showFilterBar?: boolean
   filters?: Partial<Record<'category' | 'author' | 'genre' | 'cost' | 'tags', FilterDimension>>
-  categories: string[]
+  categories?: string[]
   customFields?: CustomField[]
   staticmanUrl?: string
   basePath?: string

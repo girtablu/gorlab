@@ -90,5 +90,5 @@ export default {
   // categories: options presented to submitters in the submission form.
   // This does NOT restrict what the app displays — posts in any category appear
   // automatically. This list only controls what submitters can choose from.
-  categories: ["systems", "adventures", "monsters", "miscellany"],
+  // categories: ["."],
 };
