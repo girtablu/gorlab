@@ -1,6 +1,8 @@
 # Contributing to gorlab
 
-This doc is for anyone who wants to modify the app: routes, components, data loading, theming, or tests. End users adding content or changing config don't need any of this — see [README.md](README.md).
+This doc is for developers working on the gorlab framework itself: routes, components, data loading, theming, tests, and CLI.
+
+**Are you a site owner?** You don't need any of this. See [starter-template/README.md](starter-template/README.md) for setup, configuration, and usage.
 
 
 ## How the app is structured
@@ -13,6 +15,8 @@ The codebase has two distinct layers that should never blur:
 | **Content** | `posts/`, `gorlab.config.js`, `staticman.yml`    | Site owner  |
 
 SvelteKit prebuilds every route at build time (fully static output to `build/`). There is no server at runtime.
+
+Posts are markdown files in `posts/` — flat or in subdirectories. Subdirectory names have no effect on categories; categories come entirely from the `category:` frontmatter field in each file.
 
 ```
 src/
@@ -125,7 +129,7 @@ Full preset list: `cerberus`, `wintry`, `vintage`, `crimson`, `pine`, `modern`, 
 
 3. Set `theme: "my-theme"` in `gorlab.config.js`.
 
-Site owners who don't have access to `src/` can use the `customCss` config option instead — see `README.md`.
+Site owners who don't have access to `src/` can use the `customCss` config option instead — see [starter-template/README.md](starter-template/README.md).
 
 ### Dark mode
 
