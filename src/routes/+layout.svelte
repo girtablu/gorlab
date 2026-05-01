@@ -112,16 +112,6 @@
         {:else}
             <span>{config.title}</span>
         {/if}
-        {#if __COMMIT_URL__}
-            <a
-                href={__COMMIT_URL__}
-                class="hover:opacity-80"
-                target="_blank"
-                rel="noopener">#{__COMMIT_SHA__}</a
-            >
-        {:else}
-            <span>#{__COMMIT_SHA__}</span>
-        {/if}
         <a
             href="https://opensource.org/licenses/MIT"
             class="hover:opacity-80"
