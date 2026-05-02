@@ -160,12 +160,12 @@ basePath: '/my-catalog',
 ## Upgrading
 
 ```bash
-npm update @girtablu/gorlab
+npm update @gulluth/gorlab
 ```
 
 Then push — GitHub Actions rebuilds with the new version.
 
-**GitHub UI:** Edit `package.json`, bump the version number in `"@girtablu/gorlab": "^x.y.z"`, commit. The CI workflow runs `npm install` which resolves the new version automatically.
+**GitHub UI:** Edit `package.json`, bump the version number in `"@gulluth/gorlab": "^x.y.z"`, commit. The CI workflow runs `npm install` which resolves the new version automatically.
 
 ---
 
@@ -197,7 +197,7 @@ submitUrl: "https://your-backend-endpoint/submit",
 
 When `showSubmitForm` is `true`, a **Submit** link appears in the nav and the `/submit/` route is active. When `false` (the default), the route is inaccessible and the link is hidden.
 
-Backend add-on packages (e.g. `@girtablu/gorlab-submit-netlify`) will be published separately. Until then, this feature requires you to wire up your own endpoint.
+Backend add-on packages (e.g. `@gulluth/gorlab-submit-netlify`) will be published separately. Until then, this feature requires you to wire up your own endpoint.
 
 ---
 

@@ -1,6 +1,6 @@
 {
-  "name": "@girtablu/gorlab",
-  "version": "0.1.0",
+  "name": "@gulluth/gorlab",
+  "version": "0.1.4",
   "private": false,
   "type": "module",
   "bin": {
