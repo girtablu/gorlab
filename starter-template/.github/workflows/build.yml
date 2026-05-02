@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Show gorlab version
+        run: npm list @gulluth/gorlab
+
       - name: Build
         run: npm run build
 

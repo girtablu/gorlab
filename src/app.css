@@ -1,15 +1,15 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@tailwindcss/forms';
-@source '../';
+@source './';
 
-@import '@skeletonlabs/skeleton';
+@import "@skeletonlabs/skeleton";
 /* Bundled preset themes — switch via jtc.theme in _config.yml */
-@import '@skeletonlabs/skeleton/themes/cerberus';
-@import '@skeletonlabs/skeleton/themes/wintry';
-@import '@skeletonlabs/skeleton/themes/vintage';
-@import '@skeletonlabs/skeleton/themes/crimson';
-@import '@skeletonlabs/skeleton/themes/pine';
-@import '@skeletonlabs/skeleton/themes/modern';
+@import "@skeletonlabs/skeleton/themes/cerberus";
+@import "@skeletonlabs/skeleton/themes/wintry";
+@import "@skeletonlabs/skeleton/themes/vintage";
+@import "@skeletonlabs/skeleton/themes/crimson";
+@import "@skeletonlabs/skeleton/themes/pine";
+@import "@skeletonlabs/skeleton/themes/modern";
 
 /*
   CUSTOM THEMES (contributors)
