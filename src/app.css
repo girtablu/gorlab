@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
+@source '../';
 
 @import '@skeletonlabs/skeleton';
 /* Bundled preset themes — switch via jtc.theme in _config.yml */
